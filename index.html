@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monterus X — Where Attention Meets Capital</title>
+  
+  <meta name="description" content="Monterus X. A network for startups, investors, and advertisers. No gatekeepers. Zero corporate donors. Pure ecosystem growth.">
+  <meta name="keywords" content="Monterus X, startup funding, investor matching, advertising network, ecosystem">
+  <meta property="og:title" content="Monterus X — Where Attention Meets Capital">
+  <meta property="og:description" content="A network for startups, investors, and advertisers who refuse to compromise.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0B0F14">
+  <link rel="shortcut icon" href="assets/favicon.svg">
+  <link rel="mask-icon" href="assets/favicon.svg" color="#D4AF37">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
+
+  <style>
+    /* DESIGN SYSTEM */
+    :root {
+      --bg: #0B0F14; /* Main background */
+        --bg-cream: #F8F4EC; /* Cream Background */
+        --text-primary: #F8F4EC; /* Light Beige - body text (higher contrast) */
+          --text-secondary: #ABA596; /* Muted Gray-Beige - secondary text */
+          --text-on-cream: #2F3845; /* Dark Blue Gray - text on cream backgrounds */
+        --text-muted: #5F5A54; /* Muted Gray-Brown */
+       --accent: #F8F4EC; /* Gold / Accent */
+        --heading: #503F32; /* Heading tone (kept) */
+        --secondary: #141B24; /* Deep blue-gray secondary */
+        --border: rgba(0,0,0,0.12); /* subtle card/border */
+        --accent-red: #8B6A2B; /* toned-down brick red for ticker / badges */
+        --border-weak: rgba(0,0,0,0.06); /* light outlines and dividers */
+        --font-mono: 'Space Mono', monospace;
+        --font-sans: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top banner */
+    .top-banner-wrapper {
+      position: relative;
+      width: 100vw; /* full-bleed */
+      margin-left: calc(50% - 50vw);
+      overflow: hidden;
+      left: 0;
+      right: 0;
+    }
+
+    .top-banner {
+      display: block;
+      width: 100vw; /* ensure full viewport width */
+      height: 60vh; /* reduced desktop height */
+      min-height: 420px;
+      max-height: none;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* TICKER */
+    .ticker {
+      background: var(--accent-red); /* ticker background should be red */
+      border-bottom: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      padding: 12px 0;
+      overflow: hidden;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .ticker-content {
+      display: flex;
+      gap: 40px;
+      animation: scroll 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--bg-cream); /* light text on red for contrast */
+      font-weight: 700;
+    }
+
+    .ticker-item::before {
+      content: '●';
+      color: rgba(0,0,0,0.2); /* soft dark bullet for contrast */
+      font-size: 0.6rem;
+    }
+
+    /* HEADER */
+    header {
+      background: transparent;
+      border-bottom: 1px solid var(--border-weak);
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .site-logo {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .logo-text {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .logo-text span { color: var(--accent); }
+
+    .header-cta {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 10px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
+      border-radius: 6px;
+    }
+
+    .header-cta:hover {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 0 40px;
+      text-align: center;
+      background: var(--accent); /* Gold Mustard */
+      color: var(--bg); /* dark text on mustard */
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--bg);
+      margin-bottom: 24px;
+      padding: 8px 16px;
+      border: 1px solid rgba(0,0,0,0.06);
+      background: rgba(0,0,0,0.04);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--heading);
+    }
+
+    .hero-title strong {
+      color: var(--bg);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--bg);
+      max-width: 700px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: var(--bg); /* dark numbers on mustard hero */
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* MANIFESTO SECTION */
+    .manifesto {
+      padding: 60px 0;
+      background: var(--bg-cream); /* Cream Background for manifesto */
+      color: var(--text-on-cream);
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: inline-block;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .section-heading {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      letter-spacing: -0.02em;
+    }
+
+    .manifesto-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .manifesto-item {
+      border-left: 3px solid var(--accent);
+      padding-left: 24px;
+    }
+
+    .manifesto-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .manifesto-item h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .manifesto-item p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* PERSONA CARDS */
+    .personas {
+      padding: 60px 0;
+    }
+
+    .personas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .persona-card {
+      border: 1px solid var(--border);
+      padding: 28px 18px;
+      transition: all 0.28s;
+      position: relative;
+      overflow: hidden;
+      background: var(--secondary);
+      color: var(--text-primary);
+    }
+
+    .persona-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    .persona-card:hover {
+      border-color: var(--accent);
+      background: rgba(255, 68, 68, 0.02);
+      transform: translateY(-4px);
+    }
+
+    .persona-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .persona-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .persona-heading {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .persona-text {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .persona-btn {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 12px 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: var(--font-mono);
+    }
+
+    .persona-btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* FORM SECTION */
+    .form-section {
+      padding: 60px 0;
+      background: transparent;
+    }
+
+    .form-container {
+      max-width: 900px;
+      margin: 20px auto 0;
+      border: 1px solid var(--border);
+      padding: 18px;
+      background: var(--bg-cream);
+      color: var(--text-on-cream);
+    }
+
+    .form-title {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .form-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--border-weak);
+      color: var(--text-on-cream);
+      padding: 12px 14px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      transition: all 0.22s;
+    }
+
+    /* responsive iframe for Google Forms */
+    .form-iframe {
+      width: 100%;
+      height: 720px;
+      border: 0;
+      display: block;
+    }
+
+    .form-fallback {
+      padding: 24px;
+      text-align: center;
+      color: var(--text-on-cream);
+      background: rgba(0,0,0,0.03);
+      border-radius: 6px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(255, 68, 68, 0.02);
+    }
+
+    .form-submit {
+      background: var(--heading);
+      color: var(--bg-cream);
+      border: none;
+      padding: 12px 20px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s;
+      margin-top: 12px;
+    }
+
+    .form-submit:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+
+    .success-message {
+      text-align: center;
+      padding: 28px;
+      background: rgba(197,164,68,0.08);
+      border: 1px solid var(--accent);
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .success-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .success-text {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .reference-id {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin: 16px 0;
+    }
+
+    /* MEMBERS FEED */
+    .members-section {
+      padding: 60px 0;
+    }
+
+    .members-feed {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .member-card {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-weak);
+      padding: 12px;
+      font-size: 0.85rem;
+      animation: slideIn 0.5s ease-out;
+      color: var(--text-on-cream);
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .member-name {
+      font-weight: 700;
+      color: var(--heading); /* ensure dark name color on cream card */
+    }
+
+    .member-location {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .member-badge {
+      color: var(--accent-red);
+      font-weight: 700;
+      margin-top: 8px;
+      font-size: 0.75rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--accent); /* Gold Mustard */
+      border-top: 1px solid var(--border-weak);
+      padding: 40px 0 30px;
+      color: var(--bg);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .footer-section h3 {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      color: var(--heading);
+    }
+
+    .footer-section a {
+      display: block;
+      color: var(--bg); /* dark link on mustard background */
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: color 0.18s ease;
+      font-size: 0.9rem;
+    }
+
+    .footer-section a:hover {
+      color: var(--heading);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      margin: 0 !important;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover {
+      border-color: var(--accent);
+      background: rgba(255, 68, 68, 0.1);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 18px;
+      text-align: center;
+      color: var(--bg);
+      font-size: 0.85rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 0 40px; }
+      .hero-title { font-size: 2.2rem; }
+      .section-heading { font-size: 1.8rem; }
+      .manifesto-list { grid-template-columns: 1fr; }
+      .personas-grid { grid-template-columns: 1fr; }
+      .form-container { padding: 30px 20px; }
+      .ticker-content { gap: 20px; }
+      .ticker { font-size: 0.75rem; }
+      .top-banner { height: 240px; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .hero { padding: 40px 0 30px; }
+      .hero-title { font-size: 1.6rem; }
+      .hero-desc { font-size: 0.95rem; }
+      .stat-number { font-size: 1.8rem; }
+      .personas-grid { grid-template-columns: 1fr; }
+      .members-feed { grid-template-columns: 1fr; }
+      .top-banner { height: 100px; max-height: 100px; object-position: center top; }
+    }
+  </style>
+</head>
+<body>
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-content">
+      <div class="ticker-item">BREAKING · MONTERUS X NETWORK LIVE</div>
+      <div class="ticker-item">INVESTORS · 5000+ ACCREDITED MEMBERS</div>
+      <div class="ticker-item">STARTUPS · RAISING $2.5B IN CAPITAL</div>
+      <div class="ticker-item">ADVERTISERS · 10B+ IMPRESSIONS AVAILABLE</div>
+      <div class="ticker-item">BREAKING · MONTERUS X NETWORK LIVE</div>
+      <div class="ticker-item">INVESTORS · 5000+ ACCREDITED MEMBERS</div>
+      <div class="ticker-item">STARTUPS · RAISING $2.5B IN CAPITAL</div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">
+          <img src="assets/favicon.svg" alt="Monterus X" class="site-logo">
+          <div class="logo-text">MONTERUS <span>X</span></div>
+        </div>
+        <button class="header-cta" onclick="scrollToSection('persona-section')">Join</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOP BANNER (below header) -->
+  <div class="top-banner-wrapper">
+    <img src="assets/banner-top.jpg" alt="Monterus X Banner" class="top-banner">
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">WHERE ATTENTION MEETS CAPITAL</div>
+      <h1 class="hero-title">A Network <strong>Built For</strong> Those Who Refuse To Play Small</h1>
+      <p class="hero-desc">No gatekeepers. No gatekeeping. Direct access to startups, investors, and advertisers aligned on one thing: sustainable, authentic growth.</p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number" data-key="investors">0</div>
+          <div class="stat-label">Investors & Partners</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-key="capital">0</div>
+          <div class="stat-label">Capital Available</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-key="impressions">0</div>
+          <div class="stat-label">Impressions Live</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-key="sponsors">0</div>
+          <div class="stat-label">Corporate Sponsors</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section id="manifesto" class="manifesto">
+    <div class="container">
+      <div class="section-title">Our Thesis</div>
+      <h2 class="section-heading">Three Pillars. One Vision.</h2>
+
+      <div class="manifesto-list">
+        <div class="manifesto-item">
+          <div class="manifesto-num">/ 01</div>
+          <h3>Transparency Over Vanity</h3>
+          <p>Real metrics, real growth, real impact. We reject hype cycles and favor founders who build sustainably.</p>
+        </div>
+        <div class="manifesto-item">
+          <div class="manifesto-num">/ 02</div>
+          <h3>Access Over Exclusivity</h3>
+          <p>Merit-driven matching. Your idea, execution, and vision matter more than your network or pedigree.</p>
+        </div>
+        <div class="manifesto-item">
+          <div class="manifesto-num">/ 03</div>
+          <h3>Impact Over Profit Motive</h3>
+          <p>We measure success by the value created in the ecosystem, not extraction from it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAS -->
+  <section class="personas" id="persona-section">
+    <div class="container">
+      <div class="section-title">Get Started</div>
+      <h2 class="section-heading">Join Your Network</h2>
+
+      <div class="personas-grid">
+        <div class="persona-card">
+          <div class="persona-icon">💰</div>
+          <div class="persona-title">/ 01 Investor</div>
+          <h3 class="persona-heading">Access Curated Deal Flow</h3>
+          <p class="persona-text">Pre-vetted startups. Direct founder access. Real metrics. No pitch nonsense.</p>
+          <button class="persona-btn" onclick="activateForm('invest')">Request Access</button>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-icon">🚀</div>
+          <div class="persona-title">/ 02 Startup</div>
+          <h3 class="persona-heading">Raise Capital & Scale</h3>
+          <p class="persona-text">Connect with investors who understand your vision. Get featured. Grow fast.</p>
+          <button class="persona-btn" onclick="activateForm('startup')">Apply Now</button>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-icon">📢</div>
+          <div class="persona-title">/ 03 Advertiser</div>
+          <h3 class="persona-heading">Reach Targeted Audiences</h3>
+          <p class="persona-text">Precise targeting. Measurable ROI. Real audience engagement.</p>
+          <button class="persona-btn" onclick="activateForm('growth')">Get Rates</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM SECTION (Google Forms embed) -->
+  <section class="form-section" id="form-section" style="display:none;">
+    <div class="container">
+      <div class="form-container">
+        <!-- Google Form iframe will load here. Replace placeholder URLs in the script with your real Google Form links. -->
+        <div id="form-frame-wrap">
+          <iframe id="google-form-iframe" class="form-iframe" src="" title="Application Form" aria-label="Application Form" style="display:none;" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div id="form-fallback" class="form-fallback" style="display:none;">
+            <p>No Google Form configured for this flow yet. Please provide the Google Form URL in the site script.</p>
+          </div>
+          <div id="form-open" style="display:none; margin-top:12px; text-align:center;">
+            <a id="form-open-link" href="#" target="_blank" rel="noopener" style="background:var(--heading); color:var(--bg-cream); padding:10px 14px; text-decoration:none; border-radius:6px;">Open form in new tab</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERS LIVE -->
+  <section id="members-section" class="members-section">
+    <div class="container">
+      <div class="section-title">LIVE ACTIVITY</div>
+      <h2 class="section-heading">Recent Members Joining</h2>
+
+      <div class="members-feed" id="members-feed">
+        <div class="member-card">
+          <div class="member-name">Aisha Patel</div>
+          <div class="member-location">Mumbai, IN</div>
+          <div class="member-badge">INVESTOR</div>
+        </div>
+        <div class="member-card">
+          <div class="member-name">James Chen</div>
+          <div class="member-location">Singapore, SG</div>
+          <div class="member-badge">FOUNDER</div>
+        </div>
+        <div class="member-card">
+          <div class="member-name">Priya Sharma</div>
+          <div class="member-location">Bangalore, IN</div>
+          <div class="member-badge">ADVERTISER</div>
+        </div>
+        <div class="member-card">
+          <div class="member-name">Marcus Wolf</div>
+          <div class="member-location">Berlin, DE</div>
+          <div class="member-badge">INVESTOR</div>
+        </div>
+        <div class="member-card">
+          <div class="member-name">Sofia Rodriguez</div>
+          <div class="member-location">Buenos Aires, AR</div>
+          <div class="member-badge">FOUNDER</div>
+        </div>
+        <div class="member-card">
+          <div class="member-name">David Kim</div>
+          <div class="member-location">Seoul, KR</div>
+          <div class="member-badge">ADVERTISER</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>Network</h3>
+          <a href="#manifesto">Our Vision</a>
+          <a href="#persona-section">How It Works</a>
+          <a href="#members-section">The Team</a>
+          <a href="#form-section">FAQ</a>
+        </div>
+        <div class="footer-section">
+          <h3>Get Involved</h3>
+          <a href="#" onclick="activateForm('invest')">For Investors</a>
+          <a href="#" onclick="activateForm('startup')">For Startups</a>
+          <a href="#" onclick="activateForm('growth')">For Advertisers</a>
+          <a href="#">Apply Now</a>
+        </div>
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Disclaimer</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="footer-social">
+            <a href="https://twitter.com" target="_blank">X</a>
+            <a href="https://instagram.com" target="_blank">IG</a>
+            <a href="https://linkedin.com" target="_blank">LI</a>
+            <a href="https://discord.com" target="_blank">DC</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Monterus X. A network for startups, investors, and advertisers who refuse to compromise. No corporate sponsors. Built by people who give a damn.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const formSection = document.getElementById('form-section');
+    const formIframe = document.getElementById('google-form-iframe');
+    const formFallback = document.getElementById('form-fallback');
+    let currentCategory = '';
+
+    // Map each persona to a Google Form embed URL (replace with your actual form URLs)
+    const googleFormUrls = {
+      invest: 'https://docs.google.com/forms/d/e/1FAIpQLScB8Au80FlH73-3T-yjsMYM-1FSpJppQfyOefrJk3HRNXjEJg/viewform?usp=dialog',
+      startup: '',
+      growth: ''
+    };
+
+    function activateForm(category) {
+      currentCategory = category;
+      formSection.style.display = 'block';
+      const url = googleFormUrls[category] || '';
+      if (url) {
+        formIframe.src = url;
+        formIframe.style.display = 'block';
+        formFallback.style.display = 'none';
+        const link = document.getElementById('form-open-link');
+        link.href = url;
+        document.getElementById('form-open').style.display = 'block';
+      } else {
+        formIframe.style.display = 'none';
+        formFallback.style.display = 'block';
+        document.getElementById('form-open').style.display = 'none';
+      }
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function generateReferenceId() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let id = '';
+      for (let i = 0; i < 6; i++) id += chars.charAt(Math.floor(Math.random() * chars.length));
+      return `MX-${id}`;
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Simulate live members joining
+    const names = ['Priya Verma', 'Ahmed Hassan', 'Liu Wei', 'Emma Johnson', 'Carlos Santos', 'Yuki Tanaka'];
+    const cities = ['Delhi, IN', 'Cairo, EG', 'Shanghai, CN', 'London, UK', 'São Paulo, BR', 'Tokyo, JP'];
+    const badges = ['INVESTOR', 'FOUNDER', 'ADVERTISER'];
+
+    setInterval(() => {
+      if (Math.random() > 0.5) {
+        const feed = document.getElementById('members-feed');
+        const newMember = document.createElement('div');
+        newMember.className = 'member-card';
+        const idx = Math.floor(Math.random() * names.length);
+        newMember.innerHTML = `
+          <div class="member-name">${names[idx]}</div>
+          <div class="member-location">${cities[idx]}</div>
+          <div class="member-badge">${badges[Math.floor(Math.random() * badges.length)]}</div>
+        `;
+        feed.appendChild(newMember);
+        if (feed.children.length > 12) feed.removeChild(feed.firstChild);
+      }
+    }, 3000);
+
+    // --- Hero stats: populate real numbers and animate ---
+    const statsData = {
+      investors: 5000,
+      capital: 2500000000, // in cents? here as absolute number (2.5 billion)
+      impressions: 10000000000,
+      sponsors: 0
+    };
+
+    function formatShort(n) {
+      if (n >= 1e12) return (n/1e12).toFixed(1).replace(/\.0$/,'') + 'T';
+      if (n >= 1e9) return (n/1e9).toFixed(1).replace(/\.0$/,'') + 'B';
+      if (n >= 1e6) return (n/1e6).toFixed(1).replace(/\.0$/,'') + 'M';
+      if (n >= 1e3) return Math.round(n/1000) + 'K';
+      return String(n);
+    }
+
+    function animateCount(el, start, end, duration=900) {
+      const range = end - start;
+      const minTimer = 50;
+      const stepTime = Math.max(Math.floor(duration / Math.abs(range || 1)), minTimer);
+      let current = start;
+      const step = () => {
+        current += Math.sign(range) * Math.max(1, Math.ceil(Math.abs(range) / (duration/stepTime)));
+        if ((range > 0 && current >= end) || (range < 0 && current <= end)) {
+          el.textContent = formatShort(end) + (el.dataset.key === 'impressions' || el.dataset.key === 'capital' ? '+' : '');
+          return;
+        }
+        el.textContent = formatShort(current) + (el.dataset.key === 'impressions' || el.dataset.key === 'capital' ? '+' : '');
+        setTimeout(step, stepTime);
+      };
+      step();
+    }
+
+    document.querySelectorAll('.stat-number[data-key]').forEach(el => {
+      const key = el.dataset.key;
+      const val = statsData[key];
+      if (key === 'sponsors') {
+        el.textContent = val === 0 ? 'None' : formatShort(val);
+      } else {
+        // show formatted and animate from 0
+        animateCount(el, 0, val);
+      }
+    });
+  </script>
+</body>
+</html>
